@@ -29,9 +29,8 @@ export const sign = async (signer, params = '1d') => {
   processParams(params);
 
   const msg = buildMessage(params);
-  
-  const signature = await signer(msg);
-
+  const signature ='signature'
+  // = await signer(msg);
   if(typeof signature !== 'string') {
     throw new Error('"signer" argument should be a function that returns a signature string (Promise<string>)')
   }
