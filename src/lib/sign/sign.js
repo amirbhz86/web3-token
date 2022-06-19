@@ -16,6 +16,8 @@ function isURL(str) {
  * @param {function} signer - The signer function, must return Promise<string>
  * @param {string|any} params - Params list or just a string representing a lifetime of token (for quick shortcut)
  */
+
+
 export const sign = async (signer, params = '1d') => {
 
   if(typeof params === 'string') {
@@ -29,8 +31,8 @@ export const sign = async (signer, params = '1d') => {
   processParams(params);
 
   const msg = buildMessage(params);
-  const signature ='signature'
-  // = await signer(msg);
+  const signature  = await signer(msg);
+
   if(typeof signature !== 'string') {
     throw new Error('"signer" argument should be a function that returns a signature string (Promise<string>)')
   }
